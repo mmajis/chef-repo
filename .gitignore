@@ -2,3 +2,4 @@
 cookbooks/java/*
 .DS_Store
 .chef
+cookbooks/nginx/*
