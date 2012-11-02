@@ -1,0 +1,19 @@
+#created by chef at <%= Time.now %>
+
+upstream testapp {
+    <% @appservers.each do |appserver| -%>
+    server <%= appserver["ipaddress"] %>:8080;   
+    <% end -%>
+}
+
+server {
+  listen   80;
+  server_name  "";
+
+  access_log  /var/log/nginx/localhost.access.log target_server_timed_combined;
+  access_log  /var/log/nginx/localhost.upstream.log upstream_only;
+
+  location / {
+    proxy_pass http://testapp;
+  }
+}
