@@ -10,8 +10,8 @@ server {
   listen   80;
   server_name  "";
 
-  access_log  /var/log/nginx/localhost.access.log target_server_timed_combined;
-  access_log  /var/log/nginx/localhost.upstream.log upstream_only;
+  access_log  /var/log/nginx/localhost.access.log timed_combined;
+  access_log  /var/log/nginx/localhost.upstream.log upstream_info;
 
   location / {
     proxy_pass http://testapp;
