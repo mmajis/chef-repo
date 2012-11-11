@@ -7,17 +7,22 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "apt"
+
 #to use ganglia 3.4.0:
 #- add ganglia rufustfirefly apt repo
 #- run apt-get update
 #- define attributes needed by ganglia recipe
 #- include ganglia::ganglia recipe 
 
+apt_repository "ganglia" do
+  uri "http://ppa.launchpad.net/rufustfirefly/ganglia/ubuntu"
+  distribution node[:lsb][:codename]
+  components {"main"}
+  keyserver "keyserver.ubuntu.com"
+  key "A93EFBE2"
+end
 
-
-#TODO this ganglia recipe requires some attributes, set them!
-#ganglia server host
-#ganglia cluster name
-#ganglia server role, see default ganglia cookbook recipe
+#Ganglia attributes defined in role(s) or use defaults from recipe.
 include_recipe "ganglia::ganglia"
 

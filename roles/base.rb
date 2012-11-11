@@ -5,3 +5,9 @@ run_list(
   "recipe[chef-client]"
 #  "recipe[build-essential]"
 )
+default_attributes(
+  :ganglia => {
+    :server_role => "ganglia_listener",
+    :unicast => true
+  }
+)
