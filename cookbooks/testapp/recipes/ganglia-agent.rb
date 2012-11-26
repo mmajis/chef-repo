@@ -16,13 +16,14 @@ include_recipe "apt"
 #- include ganglia::ganglia recipe 
 
 apt_repository "ganglia" do
-  uri "http://ppa.launchpad.net/rufustfirefly/ganglia/ubuntu"
+  uri "http://ppa.launchpad.net/rufustfirefly/ganglia/ubuntu/"
   distribution node[:lsb][:codename]
-  components {"main"}
+  components ["main"]
   keyserver "keyserver.ubuntu.com"
   key "A93EFBE2"
+  deb_src true
 end
 
 #Ganglia attributes defined in role(s) or use defaults from recipe.
-include_recipe "ganglia::ganglia"
+include_recipe "ganglia"
 

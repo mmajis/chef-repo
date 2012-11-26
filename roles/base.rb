@@ -8,6 +8,7 @@ run_list(
 default_attributes(
   :ganglia => {
     :server_role => "ganglia_listener",
-    :unicast => true
+    :unicast => true,
+    :cluster_name => "chefcluster"
   }
 )
