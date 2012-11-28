@@ -10,14 +10,14 @@
 node["java"]["jdk_version"] = "7"
 include_recipe "java"
 
-#Could use the ark cookbook to download/extract jetty...
+#Could use the ark cookbook to download/extract jetty...?
 
 cookbook_file "/tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do
   #source "testfile" # this is the value that would be inferred from the path parameter
   mode "0755"
 end
 
-execute "tar zxvf /tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do
+execute "tar zxf /tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do
   creates "/opt/jetty"
   action :run
   cwd "/opt"
