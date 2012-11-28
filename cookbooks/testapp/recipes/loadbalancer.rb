@@ -31,7 +31,7 @@ template "/etc/nginx/sites-available/default" do
   owner "root"
   group "root"
   variables({
-    :appservers => search(:node, 'role:testapp'),
+    :appservers => search(:node, "role:testapp AND chef_environment:#{node.chef_environment}")
   })
 end
 
