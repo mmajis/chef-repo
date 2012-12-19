@@ -12,9 +12,11 @@ include_recipe "java"
 
 #Could use the ark cookbook to download/extract jetty...?
 
-cookbook_file "/tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do
-  #source "testfile" # this is the value that would be inferred from the path parameter
+remote_file "/tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do
+  source "https://dl.dropbox.com/u/1279329/thesis/soawar/jetty-distribution-8.1.7.v20120910.tar.gz"
   mode "0755"
+  checksum "a65d20367839bf3df7d32a05992678487ba8daeebb41d9833975aee46ffe86c2"
+  not_if "test -d /opt/jetty"
 end
 
 execute "tar zxf /tmp/jetty-distribution-8.1.7.v20120910.tar.gz" do

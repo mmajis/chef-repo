@@ -1,0 +1,5 @@
+
+knife ec2 server create -I ami-3d4ff254 -x ubuntu -r "role[base],role[ganglia_listener]" --flavor m1.small
+knife ec2 server create -I ami-3d4ff254 -x ubuntu -r "role[base],role[loadbalancer]" --flavor m1.small
+knife ec2 server create -I ami-3d4ff254 -x ubuntu -r "role[base],role[testapp]" --flavor m1.small
+knife ec2 server create -I ami-3d4ff254 -x ubuntu -r "role[base],role[testapp]" --flavor m1.small

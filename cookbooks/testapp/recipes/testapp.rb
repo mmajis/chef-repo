@@ -9,9 +9,10 @@
 
 include_recipe "testapp::jetty"
 
-cookbook_file "/opt/jetty/webapps/testapp.war" do
-  #source "testfile" # this is the value that would be inferred from the path parameter
+remote_file "/opt/jetty/webapps/testapp.war" do
+  source "https://dl.dropbox.com/u/1279329/thesis/soawar/testapp-20121219.war"
   mode "0755"
+  checksum "3163de36a833507cb55eda85bc4090347a7b77ea428a9e21c4805d3189d4f603"
   user "ubuntu"
   group "ubuntu"
 end
