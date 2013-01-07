@@ -5,3 +5,9 @@ run_list(
   "recipe[testapp::ganglia-listener]",
   "recipe[testapp::ganglia-web]"
 )
+default_attributes(
+  :ganglia => {
+    :mute => "yes",
+    :deaf => "no"
+  }
+)

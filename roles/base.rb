@@ -9,6 +9,8 @@ default_attributes(
   :ganglia => {
     :server_role => "ganglia_listener",
     :unicast => true,
-    :cluster_name => "chefcluster"
+    :cluster_name => "chefcluster",
+    :mute => "no",
+    :deaf => "no"
   }
 )
