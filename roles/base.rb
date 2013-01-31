@@ -12,5 +12,9 @@ default_attributes(
     :cluster_name => "chefcluster",
     :mute => "no",
     :deaf => "no"
+  },
+  "chef_client" => {
+		"interval" => "60",
+		"splay" => "10"
   }
 )

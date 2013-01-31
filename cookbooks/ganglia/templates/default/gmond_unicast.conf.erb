@@ -8,10 +8,11 @@ globals {
   max_udp_msg_len = 1472        
   mute = <%= @mute %>             
   deaf = <%= @deaf %>             
-  host_dmax = 0 /*secs */ 
-  cleanup_threshold = 300 /*secs */ 
+  host_dmax = 45 /*secs */ 
+  cleanup_threshold = 15 /*secs */ 
   gexec = no             
-  send_metadata_interval = 30     
+  send_metadata_interval = 60
+/*  override_hostname = <%= @instance_id %> */
 } 
 
 /* If a cluster attribute is specified, then all gmond hosts are wrapped inside 
@@ -167,7 +168,7 @@ collection_group {
    set significantly higher to reduce unneccessary network chatter. */ 
 collection_group { 
   collect_every = 20 
-  time_threshold = 90 
+  time_threshold = 30 
   /* CPU status */ 
   metric { 
     name = "cpu_user"  
@@ -216,7 +217,7 @@ collection_group {
 
 collection_group { 
   collect_every = 20 
-  time_threshold = 90 
+  time_threshold = 30 
   /* Load Averages */ 
   metric { 
     name = "load_one" 

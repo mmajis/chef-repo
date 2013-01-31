@@ -46,7 +46,8 @@ when true
     variables( :cluster_name => node[:ganglia][:cluster_name],
                :host => host,
                :mute => node[:ganglia][:mute],
-               :deaf => node[:ganglia][:deaf] )
+               :deaf => node[:ganglia][:deaf],
+               :instance_id => node[:ec2][:instance_id] )
     notifies :restart, "service[ganglia-monitor]"
   end
 when false

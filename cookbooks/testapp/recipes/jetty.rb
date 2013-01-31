@@ -40,6 +40,8 @@ cookbook_file "/opt/jetty/lib/ext/metrics-ganglia-3.0.0-SNAPSHOT.jar" do
 end
 cookbook_file "/opt/jetty/lib/ext/slf4j-api-1.6.6.jar" do
 end
+cookbook_file "/opt/jetty/lib/ext/queueReportingThreadPool.jar" do
+end
 
 execute "jetty-restart" do
   command "./bin/jetty.sh restart"

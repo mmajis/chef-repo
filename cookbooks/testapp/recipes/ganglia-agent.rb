@@ -9,6 +9,15 @@
 
 include_recipe "testapp::ganglia-base"
 
+
+
 #Ganglia attributes defined in role(s) or use defaults from recipe.
 include_recipe "ganglia"
+
+
+
+
+
+
+
 

@@ -50,6 +50,17 @@ execute "install-ganglia-web" do
 	cwd "/tmp/ganglia-web-3.5.4"
 end
 
+cookbook_file "/opt/ganglia-web/graph.d/nginx_accepts_ratio_report.php" do
+  owner "ubuntu"
+  group "ubuntu"
+  mode 0644
+end
+cookbook_file "/opt/ganglia-web/graph.d/nginx_scoreboard_report.php" do
+	owner "ubuntu"
+	group "ubuntu"
+  	mode 0644
+end
+
 case node[:platform]
 when "ubuntu"
 	cookbook_file "#{gangliaWebDir}/apache.conf"

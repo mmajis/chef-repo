@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
 
-<!-- Created by chef at <%= Time.now %> -->
+<!-- Created by chef -->
 <!-- Jetty with monitoring instrumentation -->
 
 <!-- =============================================================== -->
@@ -25,9 +25,10 @@
     <!-- =========================================================== -->
     <Set name="ThreadPool">
       <!-- Default queued blocking threadpool -->
-      <New class="com.yammer.metrics.jetty.InstrumentedQueuedThreadPool">
+      <New class="com.nitorcreations.soa.metrics.QueueReportingThreadPool">
         <Set name="minThreads">10</Set>
-        <Set name="maxThreads">200</Set>
+        <Set name="maxThreads">20</Set>
+        <Set name="maxQueued">0</Set>
         <Set name="detailedDump">false</Set>
       </New>
     </Set>

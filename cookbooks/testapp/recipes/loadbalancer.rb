@@ -35,11 +35,45 @@ template "/etc/nginx/sites-available/default" do
   })
 end
 
+template "/etc/nginx/sites-available/status" do
+  source "nginx-sites-available-status.erb"
+  mode 0440
+  owner "root"
+  group "root"
+end
+
+link "/etc/nginx/sites-enabled/status" do
+  to "/etc/nginx/sites-available/status"
+end
+
 # Do nothing by default with this service. Subscribe to changes of the site 
 # specification template above.
 service "nginx" do
   supports :status => true, :restart => true, :reload => true
   action :nothing
-  subscribes :reload, resources(:template => "/etc/nginx/sites-available/default")
+  subscribes :reload, resources(:template => "/etc/nginx/sites-available/default", 
+                                :template => "/etc/nginx/sites-available/status")
+end
+
+include_recipe "testapp::ganglia-agent"
+
+cookbook_file "/usr/lib/ganglia/python_modules/nginx_status.py" do
+  mode 0444
+end
+
+template "/etc/ganglia/conf.d/nginx_status.pyconf" do
+  source "nginx_status.pyconf.erb"
+  mode 0444
+  variables(
+    :nginx_node => search(:node, 'role:loadbalancer').map {|node| node.ipaddress}[0],
+    :nginx_status_port => "8080"
+  )
+  notifies :restart, "service[ganglia-monitor]", :delayed
+end
+
+service "ganglia-monitor" do
+  pattern "gmond"
+  supports :restart => true
+  action :nothing
 end
 

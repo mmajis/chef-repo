@@ -21,3 +21,16 @@ when "ubuntu"
 	end
 end
 	
+directory "/etc/ganglia/conf.d" do
+	mode 0755
+	recursive true
+end
+
+directory "/usr/lib/ganglia/python_modules" do
+	mode 0755
+	recursive true
+end
+
+cookbook_file "/etc/ganglia/conf.d/modpython.conf" do
+	mode 0444
+end	
